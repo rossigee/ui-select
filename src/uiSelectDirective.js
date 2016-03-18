@@ -368,6 +368,10 @@ uis.directive('uiSelect',
               dropdown[0].style.top = '';
               element.removeClass(directionUpClassName);
           }
+          /**
+           * @todo - Set a parameter to make this optional
+           */
+          $select.setFocus();
         };
       };
     }
