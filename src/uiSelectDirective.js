@@ -44,6 +44,9 @@ uis.directive('uiSelect',
         $select.focusserTitle = $select.baseTitle + ' focus';
         $select.focusserId = 'focusser-' + $select.generatedId;
 
+        $select.displayMobileKeyboardOnFocus = attrs.displayMobileKeyboardOnFocus !== undefined
+            ? attrs.displayMobileKeyboardOnFocus : false;
+
         $select.closeOnSelect = function() {
           if (angular.isDefined(attrs.closeOnSelect)) {
             return $parse(attrs.closeOnSelect)();
@@ -368,10 +371,8 @@ uis.directive('uiSelect',
               dropdown[0].style.top = '';
               element.removeClass(directionUpClassName);
           }
-          /**
-           * @todo - Set a parameter to make this optional
-           */
-          $select.setFocus();
+
+          if ($select.displayMobileKeyboardOnFocus) $select.setFocus();
         };
       };
     }
